@@ -13,7 +13,5 @@ locals {
 }
 
 locals {
-  config = {
-    environment = local.environments[var.ENV]
-  }
+  environment = local.environments[var.ENV]
 }
