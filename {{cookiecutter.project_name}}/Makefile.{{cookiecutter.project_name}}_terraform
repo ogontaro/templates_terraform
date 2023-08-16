@@ -1,0 +1,19 @@
+1.init:
+	task init
+.PHONY: init
+
+2.plan:
+	task plan
+.PHONY: plan
+
+3.plan_debug:
+	task plan_debug
+.PHONY: plan_debug
+
+4.lock.update:
+	task lock:update
+.PHONY: 4.lock.update
+
+5.lock.add_project:
+	task lock:add_project
+.PHONY: 5.lock.add_project

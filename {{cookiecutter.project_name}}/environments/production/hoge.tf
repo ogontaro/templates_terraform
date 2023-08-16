@@ -1,0 +1,5 @@
+locals {
+  hoge = {
+    name = "hoge"
+  }
+}

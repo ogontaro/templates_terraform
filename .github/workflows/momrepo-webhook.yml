@@ -1,0 +1,21 @@
+name: Call momrepo subtree-pull action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  momrepo-webhook:
+    runs-on: [ templates-terraform-runners ]
+    steps:
+      - name: webhook
+        env:
+          MOMREPO_ACCESS_TOKEN: ${{ secrets.MOMREPO_ACCESS_TOKEN }}
+        run: |
+          curl \
+            -X POST \
+            -H "Authorization: token $MOMREPO_ACCESS_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/ogontaro/templates/dispatches \
+            -d '{"event_type":"subtree-pull","client_payload":{"env": "dev"}}'
