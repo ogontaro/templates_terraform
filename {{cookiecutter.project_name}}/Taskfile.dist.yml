@@ -38,7 +38,7 @@ tasks:
       - terraform init
       - task: _lock:update_platform
     silent: true
-  _switch_workspacce:
+  _switch_workspace:
     desc: switch terraform workspace with ENV
     internal: true
     cmds:
