@@ -15,28 +15,28 @@ tasks:
   plan:
     desc: terraform plan
     cmds:
-      - task: switch_workspace
+      - task: _switch_workspace
       - terraform plan
     silent: true
   plan_debug:
     desc: terraform plan with debug
     cmds:
-      - task: switch_workspace
+      - task: _switch_workspace
       - TF_LOG="DEBUG" terraform plan
     silent: true
   provider:upgrade:
     desc: terraform providerのバージョンアップ
     cmds:
-      - task: switch_workspace
+      - task: _switch_workspace
       - terraform init -upgrade
-      - task: lock:update_platform
+      - task: _lock:update_platform
     silent: true
   provider:add:
     desc: 新規プロバイダー情報を追加する(既存のproviderのバージョンは更新しない)
     cmds:
-      - task: switch_workspace
+      - task: _switch_workspace
       - terraform init
-      - task: lock:update_platform
+      - task: _lock:update_platform
     silent: true
   _switch_workspacce:
     desc: switch terraform workspace with ENV
