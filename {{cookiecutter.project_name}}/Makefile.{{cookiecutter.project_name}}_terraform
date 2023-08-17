@@ -1,19 +1,35 @@
-1.init:
+init:
 	task init
 .PHONY: init
 
-2.plan:
+plan:
 	task plan
 .PHONY: plan
 
-3.plan_debug:
+plan_debug:
 	task plan_debug
 .PHONY: plan_debug
 
-4.lock.update:
-	task lock:update
-.PHONY: 4.lock.update
+provider.upgrade:
+	task provider:upgrade
+.PHONY: provider.upgrade
 
-5.lock.add_project:
-	task lock:add_project
-.PHONY: 5.lock.add_project
+provider.add:
+	task provider:add
+.PHONY: provider.add
+
+lint.all:
+	task lint:all
+.PHONY: lint.all
+
+lint.tflint:
+	task lint:tflint
+.PHONY: lint.tflint
+
+lint.tflint.autofix:
+	task lint:tflint:autofix
+.PHONY: lint.tflint.autofix
+
+lint.tfsec:
+	task lint:tfsec
+.PHONY: lint.tfsec

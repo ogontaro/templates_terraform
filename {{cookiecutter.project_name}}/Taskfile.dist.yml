@@ -50,3 +50,24 @@ tasks:
     cmds:
       - terraform providers lock -platform=windows_amd64 -platform=darwin_amd64 -platform=darwin_arm64 -platform=linux_amd64 -platform=linux_arm64
     silent: true
+  lint:all:
+    desc: lint all
+    cmds:
+      - task lint:tflint || true
+      - task lint:tfsec || true
+    silent: false
+  lint:tflint:
+    desc: tflint
+    cmds:
+      - tflint
+    silent: true
+  lint:tflint:autofix:
+    desc: tflint with auto fix
+    cmds:
+      - tflint --fix
+    silent: true
+  lint:tfsec:
+    desc: tfsec
+    cmds:
+      - tfsec
+    silent: true
