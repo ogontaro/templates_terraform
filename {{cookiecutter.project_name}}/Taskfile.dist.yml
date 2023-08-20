@@ -39,10 +39,10 @@ tasks:
       - task: _lock:update_platform
     silent: true
   _switch_workspace:
-    desc: switch terraform workspace with TF_VAR_ENV
+    desc: switch terraform workspace with ENV
     internal: true
     cmds:
-      - terraform workspace select ${TF_VAR_ENV}
+      - terraform workspace select ${ENV}
     silent: true
   _lock:update_platform:
     desc: terraform lock update
