@@ -8,7 +8,7 @@ tasks:
     cmds:
       - task -l --sort none
   init:
-    desc: terraform init
+    desc: terraform init -reconfigure
     cmds:
       - AWS_PROFILE=default terraform init
     silent: true
