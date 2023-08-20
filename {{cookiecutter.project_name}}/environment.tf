@@ -13,5 +13,5 @@ locals {
 }
 
 locals {
-  environment = local.environments[var.ENV]
+  environment = local.environments[var.env]
 }
