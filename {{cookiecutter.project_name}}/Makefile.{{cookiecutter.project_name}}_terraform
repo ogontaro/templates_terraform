@@ -33,3 +33,7 @@ lint.tflint.autofix:
 lint.tfsec:
 	task lint:tfsec
 .PHONY: lint.tfsec
+
+cruft.update:
+	task cruft:update
+.PHONY: cruft.update
