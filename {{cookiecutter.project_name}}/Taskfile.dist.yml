@@ -8,9 +8,9 @@ tasks:
     cmds:
       - task -l --sort none
   init:
-    desc: terraform init -reconfigure
+    desc: terraform initをreconfigureオプション付きで実行します。初回やbackend.tfを変更した際に実行してください。
     cmds:
-      - AWS_PROFILE=default terraform init
+      - terraform init -reconfigure
     silent: true
   plan:
     desc: terraform plan
@@ -70,4 +70,9 @@ tasks:
     desc: tfsec
     cmds:
       - tfsec
+    silent: true
+  cruft:update:
+    desc: update cruft project
+    cmds:
+      - cruft update --skip-apply-ask --refresh-private-variables
     silent: true
