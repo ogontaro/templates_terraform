@@ -10,7 +10,7 @@ tasks:
   init:
     desc: terraform initをreconfigureオプション付きで実行します。初回やbackend.tfを変更した際に実行してください。
     cmds:
-      - terraform init -reconfigure
+      - TF_WORKSPACE="${ENV}" terraform init -reconfigure
     silent: true
   plan:
     desc: terraform plan
