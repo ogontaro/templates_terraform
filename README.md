@@ -3,5 +3,5 @@
 ## 使い方
 
 ```shell
-cruft create git@github.com:ogontaro/templates_terraform.git
+cruft create https://github.com/ogontaro/templates_terraform.git
 ```
