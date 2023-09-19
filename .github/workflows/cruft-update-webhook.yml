@@ -1,0 +1,26 @@
+name: call cruft update action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cruft-update-webhook:
+    runs-on: [ templates-terraform-runners ]
+    steps:
+      - name: webhook
+        env:
+          CRUFT_GITHUB_ACCESS_TOKEN: ${{ secrets.CRUFT_GITHUB_ACCESS_TOKEN }}
+        run: |
+          REPOS=(
+            "ogontaro/ogontaro_infra"
+          )
+          for REPO in "${REPOS[@]}"; do
+            curl \
+              -X POST \
+              -H "Authorization: token $CRUFT_GITHUB_ACCESS_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/$REPO/dispatches \
+              -d '{"event_type":"cruft-update","client_payload":{"env": "dev"}}'
+          done
