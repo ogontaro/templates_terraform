@@ -9,6 +9,6 @@ jobs:
   editorconfig:
     runs-on: [ templates-terraform-runners ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: editorconfig-checker/action-editorconfig-checker@main
       - run: editorconfig-checker
