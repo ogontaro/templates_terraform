@@ -10,7 +10,7 @@ jobs:
     runs-on: {{cookiecutter.project_name}}-runners
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Check for .rej files
         run: |
