@@ -6,6 +6,7 @@ permissions:
 
 on:
   workflow_dispatch:
+  workflow_call:
   schedule:
     - cron: "0 */3 * * *" # Every 3 hours
 
