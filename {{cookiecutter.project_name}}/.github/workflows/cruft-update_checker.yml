@@ -1,0 +1,20 @@
+name: Check Cruft Update with conflicts
+
+on:
+  push:
+    paths:
+      - '**/.cruft.json'
+
+jobs:
+  update:
+    runs-on: {{cookiecutter.project_name}}-runners
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check for .rej files
+        run: |
+          if find . -name "*.rej"; then
+              echo "Error: Found .rej files indicating merge conflicts. Please resolve these conflicts manually."
+              exit 1
+          fi
