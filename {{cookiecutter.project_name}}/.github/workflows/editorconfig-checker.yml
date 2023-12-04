@@ -7,7 +7,7 @@ on:
 
 jobs:
   editorconfig:
-    runs-on: ["{{cookiecutter.github_runner_scale_set_name}}-runners"]
+    runs-on: [ "{{cookiecutter.github_runner_scale_set_name}}" ]
 
     steps:
       - uses: actions/checkout@v2
