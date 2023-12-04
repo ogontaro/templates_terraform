@@ -11,7 +11,7 @@ on:
 
 jobs:
   update:
-    runs-on: {{cookiecutter.project_name}}-runners
+    runs-on: ["{{cookiecutter.github_runner_name}}-runners"]
 
     steps:
       - uses: actions/checkout@v4

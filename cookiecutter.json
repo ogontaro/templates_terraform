@@ -1,3 +1,4 @@
 {
-  "project_name": "awesome_project"
+  "project_name": "my_project",
+  "github_runner_name": "my_github_runner_name"
 }
