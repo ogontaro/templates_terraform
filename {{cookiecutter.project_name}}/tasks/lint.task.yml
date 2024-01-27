@@ -1,0 +1,45 @@
+version: '3'
+
+tasks:
+  all:
+    desc: lint all
+    cmds:
+      - echo "-------------------check terraform fmt-------------------c"
+      - task lint:format || true
+      - echo "-------------------check terraform validate-------------------c"
+      - task lint:validate || true
+      - echo "-------------------check tflint-------------------"
+      - task lint:tflint || true
+      - echo "-------------------check trivy-------------------"
+      - task lint:trivy || true
+    silent: true
+
+  format:
+    desc: terraform format
+    cmds:
+      - terraform fmt -recursive -check=true -diff
+
+  format:with_autofix:
+    desc: terraform format with auto fix
+    cmds:
+      - terraform fmt -recursive -write=true -diff
+
+  validate:
+    desc: terraform validate
+    cmds:
+      - terraform validate
+
+  tflint:
+    desc: tflint
+    cmds:
+      - tflint
+
+  tflint:autofix:
+    desc: tflint with auto fix
+    cmds:
+      - tflint --fix
+
+  trivy:
+    desc: trivy check terraform code
+    cmds:
+      - trivy config . --exit-code 1

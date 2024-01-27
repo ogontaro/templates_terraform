@@ -1,78 +1,14 @@
 version: '3'
 
-dotenv: [ '.env' ]
+dotenv: [ 'terraform/.env' ]
+
+includes:
+  terraform: 'tasks/terraform.task.yml'
+  lint: 'tasks/lint.task.yml'
+  cruft: 'tasks/cruft.task.yml'
 
 tasks:
   default:
     desc: show commands
     cmds:
       - task -l --sort none
-  init:
-    desc: terraform initをreconfigureオプション付きで実行します。初回やbackend.tfを変更した際に実行してください。
-    cmds:
-      - TF_WORKSPACE="${ENV}" terraform init -reconfigure
-    silent: true
-  plan:
-    desc: terraform plan
-    cmds:
-      - task: _switch_workspace
-      - terraform plan
-    silent: true
-  plan_debug:
-    desc: terraform plan with debug
-    cmds:
-      - task: _switch_workspace
-      - TF_LOG="DEBUG" terraform plan
-    silent: true
-  provider:upgrade:
-    desc: terraform providerのバージョンアップ
-    cmds:
-      - task: _switch_workspace
-      - terraform init -upgrade
-      - task: _lock:update_platform
-    silent: true
-  provider:add:
-    desc: 新規プロバイダー情報を追加する(既存のproviderのバージョンは更新しない)
-    cmds:
-      - task: _switch_workspace
-      - terraform init
-      - task: _lock:update_platform
-    silent: true
-  _switch_workspace:
-    desc: switch terraform workspace with ENV
-    internal: true
-    cmds:
-      - terraform workspace select ${ENV}
-    silent: true
-  _lock:update_platform:
-    desc: terraform lock update
-    internal: true
-    cmds:
-      - terraform providers lock -platform=windows_amd64 -platform=darwin_amd64 -platform=darwin_arm64 -platform=linux_amd64 -platform=linux_arm64
-    silent: true
-  lint:all:
-    desc: lint all
-    cmds:
-      - task lint:tflint || true
-      - task lint:tfsec || true
-    silent: false
-  lint:tflint:
-    desc: tflint
-    cmds:
-      - tflint
-    silent: true
-  lint:tflint:autofix:
-    desc: tflint with auto fix
-    cmds:
-      - tflint --fix
-    silent: true
-  lint:tfsec:
-    desc: tfsec
-    cmds:
-      - tfsec
-    silent: true
-  cruft:update:
-    desc: update cruft project
-    cmds:
-      - cruft update --skip-apply-ask --refresh-private-variables
-    silent: true

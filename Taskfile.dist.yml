@@ -1,0 +1,11 @@
+version: '3'
+
+tasks:
+  default:
+    desc: show commands
+    cmds:
+      - task -l --sort none
+  cookiecutter:test:init:
+    desc: generate a new project from a cookiecutter template
+    cmds:
+      - cookiecutter . --no-input project_name=test -f

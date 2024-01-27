@@ -1,0 +1,8 @@
+version: '3'
+
+tasks:
+  update:
+    desc: update cruft project
+    cmds:
+      - cruft update --skip-apply-ask --refresh-private-variables
+    silent: true

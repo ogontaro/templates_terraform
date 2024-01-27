@@ -1,0 +1,46 @@
+version: '3'
+
+tasks:
+  reconfigure:
+    desc: terraform recreate .terraform
+    cmds:
+      - asdf install
+      - TF_WORKSPACE="${ENV}" terraform init -reconfigure
+
+  plan:
+    desc: terraform plan
+    cmds:
+      - task: _switch_workspace
+      - terraform plan
+
+  plan:with_debug:
+    desc: terraform plan with debug
+    cmds:
+      - task: _switch_workspace
+      - TF_LOG="DEBUG" terraform plan
+
+  provider:upgrade:
+    desc: terraform providerのバージョンアップ
+    cmds:
+      - task: _switch_workspace
+      - terraform init -upgrade
+      - task: _lock:update_platform
+
+  provider:add:
+    desc: 新規プロバイダー情報を追加する(既存のproviderのバージョンは更新しない)
+    cmds:
+      - task: _switch_workspace
+      - terraform init
+      - task: _lock:update_platform
+
+  _switch_workspace:
+    desc: switch terraform workspace with ENV
+    internal: true
+    cmds:
+      - terraform workspace select ${ENV}
+
+  _lock:update_platform:
+    desc: terraform lock update
+    internal: true
+    cmds:
+      - terraform providers lock -platform=windows_amd64 -platform=darwin_amd64 -platform=darwin_arm64 -platform=linux_amd64 -platform=linux_arm64
