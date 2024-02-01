@@ -1,6 +1,88 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  // 各設定の詳細
+  // https://docs.renovatebot.com/configuration-options/
+  //
+  // Renovateを有効にするか
+  //   true(default): 有効
+  //   false: 無効(一時的に無効にしたいときに使う)
+  "enabled": true,
+  // デフォルトの設定値の読み込み先
+  //   configのpreset先 https://docs.renovatebot.com/presets-config/
+  //   defaultのpreset先 https://docs.renovatebot.com/presets-default/
   "extends": [
     "config:base"
-  ]
+  ],
+  // timezoneの設定
+  "timezone": "Asia/Tokyo",
+  // PRを自動的にマージするか
+  //   true: する
+  //   false(default): しない
+  "automerge": false,
+  // プルリク時に自動的に付与するラベル
+  "labels": [
+    "dependencies"
+  ],
+  // ダッシュボードを提供するか
+  //   true(default): する
+  "dependencyDashboard": true,
+  // PRの上限
+  //   default値: 10
+  //   多すぎるとPRまみれになるので、運用と相談
+  "prConcurrentLimit": 3,
+  // 1時間あたりに生成可能なPRの上限
+  //   default値: 2
+  //   prConcurrentLimitと同じにしておく
+  "prHourlyLimit": 3,
+  // 検査対象外のディレクトリ設定
+  //   https://docs.renovatebot.com/configuration-options/#ignorepaths
+  "ignorePaths": [],
+  // PRにアサイン対象のユーザーのリスト
+  //   基本は担当者はランダムでアサインする
+  //   ただし、デフォルトではautomergeが有効な場合はアサインされない
+  // assignees: [
+  //  "xxx"
+  // ],
+  // PRにレビュワー対象のユーザーのリスト
+  //   基本はレビュワーはランダムでアサインする
+  //   ただし、デフォルトではautomergeが有効な場合はアサインされない
+  //  "reviewers": [
+  //  "xxx"
+  // ],
+  // MAJOR.MINOR.PATCHごとのカスタマイズ
+  // メジャーバージョンの設定
+  "major": {
+    //   リリースされても一定日数立たないとマージしないようにする設定
+    // "minimumReleaseAge": "14 days"
+  },
+  // マイナーバージョンの設定
+  "minor": {
+    //   リリースされても一定日数立たないとマージしないようにする設定
+    // "minimumReleaseAge": "7 days",
+    //   自動マージを有効にする
+    //   ただしlinterが一つでもないと実行されないので注意
+    "automerge": true,
+    //   automergeだけではマージが遅く、platformAutomergeを有効にすると条件を満たすとすぐにマージされるようになる
+    //   参考サイト https://blog.studysapuri.jp/entry/2022/02/18/080000
+    //   マージにレビューを必須の場合はこのBotも併用する https://github.com/apps/renovate-approve
+    "platformAutomerge": true
+  },
+  // パッチバージョンの設定
+  "patch": {
+    //   自動マージを有効にする
+    //   ただしlinterが一つでもないと実行されないので注意
+    "automerge": true,
+    //   automergeだけではマージが遅く、platformAutomergeを有効にすると条件を満たすとすぐにマージされるようになる
+    //   参考サイト https://blog.studysapuri.jp/entry/2022/02/18/080000
+    //   マージにレビューを必須の場合はこのBotも併用する https://github.com/apps/renovate-approve
+    "platformAutomerge": true,
+  },
+  // パッケージやバージョンごとの固有の設定
+  // "packageRules": []
+  // 対象ブランチの設定
+  //   設定しない場合はdefaultブランチが対象となる。
+  "baseBranches": [
+    "$default"
+  ],
+  // パッケージやバージョンごとの固有の設定
+  "packageRules": [],
 }
