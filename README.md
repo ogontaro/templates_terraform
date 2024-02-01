@@ -1,4 +1,7 @@
 # Project Template for terraform
+Terraformのプロジェクトのテンプレートです。
+
+[cookiecutter](https://cookiecutter.readthedocs.io/en/stable/)と[cruft](https://cruft.github.io/cruft/)を使っています
 
 ## 使い方
 

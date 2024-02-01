@@ -5,13 +5,26 @@ tasks:
     desc: lint all
     cmds:
       - echo "-------------------check terraform fmt-------------------c"
-      - task lint:format || true
+      - task lint:format:with_autofix || true
       - echo "-------------------check terraform validate-------------------c"
       - task lint:validate || true
       - echo "-------------------check tflint-------------------"
       - task lint:tflint || true
       - echo "-------------------check trivy-------------------"
       - task lint:trivy || true
+    silent: true
+
+  all:no_exit:
+    desc: lint all without exit
+    cmds:
+      - echo "-------------------check terraform fmt-------------------c"
+      - task lint:format:with_autofix
+      - echo "-------------------check terraform validate-------------------c"
+      - task lint:validate
+      - echo "-------------------check tflint-------------------"
+      - task lint:tflint
+      - echo "-------------------check trivy-------------------"
+      - task lint:trivy
     silent: true
 
   format:

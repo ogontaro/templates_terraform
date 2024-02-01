@@ -1,0 +1,13 @@
+{
+  "template": "https://github.com/ogontaro/templates_template",
+  "commit": "be761d9cd7d0123624bb5daaf8848ca333b7d1e2",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "terraform",
+      "github_runner_scale_set_name": "ubuntu-latest",
+      "_template": "https://github.com/ogontaro/templates_template"
+    }
+  },
+  "directory": null
+}

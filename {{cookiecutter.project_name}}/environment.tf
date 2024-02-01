@@ -1,5 +1,5 @@
-module "conf_sandbox" {
-  source = "./environments/sandbox"
+module "conf_develop" {
+  source = "./environments/develop"
 }
 module "conf_production" {
   source = "./environments/production"
@@ -7,7 +7,7 @@ module "conf_production" {
 
 locals {
   environments = {
-    sandbox    = module.conf_sandbox.environment,
+    sandbox    = module.conf_develop.environment,
     production = module.conf_production.environment,
   }
 }

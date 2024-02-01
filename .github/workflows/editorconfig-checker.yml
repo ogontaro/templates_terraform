@@ -1,13 +1,16 @@
 name: EditorConfig Checker
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
   editorconfig:
-    runs-on: [ templates-terraform-runners ]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4

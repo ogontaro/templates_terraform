@@ -9,3 +9,7 @@ tasks:
     desc: generate a new project from a cookiecutter template
     cmds:
       - cookiecutter . --no-input project_name=test -f
+  cruft:update:
+    desc: update cruft project
+    cmds:
+      - cruft update --skip-apply-ask --refresh-private-variables
