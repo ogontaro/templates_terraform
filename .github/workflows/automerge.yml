@@ -30,3 +30,4 @@ jobs:
           MERGE_LABELS: "auto-merge"
           UPDATE_LABELS: "auto-merge"
           MERGE_DELETE_BRANCH: true # マージブランチを削除するか(default: false)
+          MERGE_RETRY_SLEEP: 15000
