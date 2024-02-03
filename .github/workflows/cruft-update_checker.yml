@@ -14,7 +14,7 @@ jobs:
 
       - name: Check for .rej files
         run: |
-          exit 1
+          exit 2
           REJ_FILES=$(find . -name "*.rej")
           if [ -n "$REJ_FILES" ]; then
               echo "Found .rej files indicating merge conflicts:"
