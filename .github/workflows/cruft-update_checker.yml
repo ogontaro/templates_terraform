@@ -6,7 +6,7 @@ on:
       - '**/.cruft.json'
 
 jobs:
-  update:
+  cruft-update-checker:
     runs-on: [ "ubuntu-latest" ]
 
     steps:
