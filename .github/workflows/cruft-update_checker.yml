@@ -1,9 +1,9 @@
 name: Check Cruft Update with conflicts
 
 on:
-  push:
-    paths:
-      - '**/.cruft.json'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   cruft-update-checker:
