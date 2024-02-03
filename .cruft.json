@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/ogontaro/templates_template",
-  "commit": "d54ee32b0d2305151ba08e19841e970eac13a1c5",
+  "commit": "c5bc9d1583aab9f530b7fd3ee72d7d7edb84f8f9",
   "checkout": null,
   "context": {
     "cookiecutter": {
