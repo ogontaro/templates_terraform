@@ -21,3 +21,15 @@ jobs:
               echo "Error: Please resolve these conflicts manually."
               exit 1
           fi
+
+      - name: Check for conflict markers
+        run: |
+          conflict_files=$(grep -rlE '<<<<<<<|=======|>>>>>>>' . --exclude-dir=.github) || true
+          if [[ ! -z "$conflict_files" ]]; then
+            echo "Error: Found files with conflict markers:"
+            echo "$conflict_files"
+            echo "Please resolve these conflicts manually."
+            exit 1
+          else
+            echo "No conflict markers found."
+          fi
