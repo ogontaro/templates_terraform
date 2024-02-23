@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: webhook
         env:
-          CRUFT_GITHUB_ACCESS_TOKEN: ${{ secrets.CRUFT_GITHUB_ACCESS_TOKEN}}
+          CRUFT_GITHUB_ACCESS_TOKEN: ${{"{{"}} secrets.CRUFT_GITHUB_ACCESS_TOKEN{{"}}"}}
           REPOS: ${{ vars.REPOSITORIES_TO_PUSH_EVENT}}
         run: |
           echo "$REPOS" | while IFS= read -r REPO; do
