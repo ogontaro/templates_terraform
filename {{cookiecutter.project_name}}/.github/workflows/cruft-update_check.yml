@@ -1,0 +1,23 @@
+name: Check Cruft Update with conflicts
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  cruft-update-check:
+    runs-on: [ "{{cookiecutter.github_runner_scale_set_name}}" ]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for .rej files
+        run: |
+          REJ_FILES=$(find . -name "*.rej")
+          if [ -n "$REJ_FILES" ]; then
+              echo "Found .rej files indicating merge conflicts:"
+              echo "$REJ_FILES"
+              echo "Error: Please resolve these conflicts manually."
+              exit 1
+          fi

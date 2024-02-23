@@ -1,0 +1,27 @@
+name: Trigger Cruft Update Event
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  trigger-cruft-update:
+    runs-on: [ "{{cookiecutter.github_runner_scale_set_name}}" ]
+
+    steps:
+      - name: webhook
+        env:
+          CRUFT_GITHUB_ACCESS_TOKEN: ${{ secrets.CRUFT_GITHUB_ACCESS_TOKEN}}
+          REPOS: ${{ vars.REPOSITORIES_TO_PUSH_EVENT}}
+        run: |
+          echo "$REPOS" | while IFS= read -r REPO; do
+            echo push to https://api.github.com/repos/$REPO/dispatche
+            curl \
+              -X POST \
+              -H "Authorization: token $CRUFT_GITHUB_ACCESS_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/$REPO/dispatches \
+              -d '{"event_type":"cruft-update"}'
+          done
