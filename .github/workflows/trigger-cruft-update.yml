@@ -1,4 +1,4 @@
-name: call cruft update action
+name: Trigger Cruft Update Event
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  cruft-update-webhook:
+  trigger-cruft-update:
     runs-on: [ "ubuntu-latest" ]
 
     steps:

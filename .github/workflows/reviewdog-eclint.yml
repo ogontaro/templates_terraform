@@ -1,0 +1,19 @@
+name: Reviewdog - eclint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  eclint:
+    runs-on: [ "ubuntu-latest" ]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: eclint
+        uses: reviewdog/action-eclint@v1
+        with:
+          github_token: ${{ secrets.CRUFT_GITHUB_ACCESS_TOKEN}}
+          reporter: github-pr-review # Change reporter.
+          eclint_flags: './'

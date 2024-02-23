@@ -14,7 +14,7 @@ on:
       - cruft-update
 
 jobs:
-  update:
+  cruft-update:
     runs-on: [ "ubuntu-latest" ]
 
     steps:
