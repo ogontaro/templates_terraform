@@ -1,0 +1,14 @@
+name: "Run TODO to Issue"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: [ "{{cookiecutter.github_runner_scale_set_name}}" ]
+    steps:
+      - uses: "actions/checkout@v4"
+      - name: "TODO to Issue"
+        uses: "alstr/todo-to-issue-action@v4"
